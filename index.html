@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>#1</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    </head>
+    <body>
+    <div class="all">
+        <div class="tran">
+            <input class="input" type="text" id="tran">
+        </div>
+        <div class="select">
+            <select id="select">
+                <option value="red">แดง</option>
+                <option value="green">เขียว</option>
+                <option value="blue">น้ำเงิน</option>
+                <option value="yellow">เหลือง</option>
+                <option value="pink">ชมพู</option>
+            </select>
+        </div>
+        <div class="translate" id="translate"></div>
+        <div class="button">
+            <input class="tran_1" type="reset" id="tran_1" value="แปลภาษา">
+            <input class="tran_2" type="reset" id="tran_2" value="clear">
+        </div>
+        <div class="span">
+            <span class="output" id="color"></span>
+        </div>
+    </div>
+
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+
+    <script>
+    var button = document.getElementById('tran_1');
+    var clear = document.getElementById('tran_2');
+
+    button.addEventListener('click',function(event){
+        var tran = document.getElementById('tran').value;
+        var select = document.getElementById('select').value;
+        if (select == "red")
+        {
+            document.querySelector('.output').textContent = tran;
+            document.getElementById("color").style.color = "#ff0000";
+        }
+        else if (select == "green")
+        {
+            document.querySelector('.output').textContent = tran;
+            document.getElementById("color").style.color = "green";
+        }
+        else if (select == "blue")
+        {
+            document.querySelector('.output').textContent = tran;
+            document.getElementById("color").style.color = "blue";
+        }
+        else if (select == "yellow")
+        {
+            document.querySelector('.output').textContent = tran;
+            document.getElementById("color").style.color = "#FFFF00";
+        }
+        else
+        {
+            document.querySelector('.output').textContent = tran;
+            document.getElementById("color").style.color = "#FF99FF";
+        }
+    });
+
+    function loadGoogleTranslate() {
+    new google.translate.TranslateElement("translate");
+    }
+
+    clear.addEventListener('click',function(event){
+        document.getElementById('tran').value = '';
+        document.querySelector('.output').textContent = '';
+    });
+    </script>
+    </body>
+</html>
